@@ -4,13 +4,13 @@ main = "src/index.ts"
 compatibility_date = "2024-11-12"
 compatibility_flags = ["nodejs_compat"]
 route = [
-	{ pattern = "worker.amusi755.com", custom_domain = true }
+	{ pattern = "worker.amusi755.com", custom_domain = false }
 ]
 
-#routes = [
+# routes = [
 #  	{ pattern = "worker.amusi755.com", custom_domain = true },
 #   { pattern = "subdomain.example.com/*", zone_id = "<YOUR_ZONE_ID>" }
-#]
+# ]
 
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/

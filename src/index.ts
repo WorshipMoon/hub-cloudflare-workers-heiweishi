@@ -24,7 +24,7 @@ export default {
 	// },
 	async fetch(request, env, ctx): Promise<Response> {
 		// console.log('request', request);
-		console.log('env', env);
+		// console.log('env', env);
 
 		// const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
 		// const { data, error } = await supabase.from('vpn_link').select('*');
