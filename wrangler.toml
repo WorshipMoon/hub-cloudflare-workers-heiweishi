@@ -3,7 +3,7 @@ name = "hub-cloudflare-workers-heiweishi"
 main = "src/index.ts"
 compatibility_date = "2024-11-12"
 compatibility_flags = ["nodejs_compat"]
-route = "worker.amusi755.com"
+route = { pattern = "worker.amusi755.com/*", zone_name = "amusi755.com" }
 
 # routes = [
 #  	{ pattern = "worker.amusi755.com", custom_domain = true },
