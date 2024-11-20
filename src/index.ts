@@ -26,14 +26,14 @@ export default {
 		// console.log('request', request);
 		// console.log('env', env);
 
-		// const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
-		// const { data, error } = await supabase.from('vpn_link').select('*');
-		// if (error) throw error;
-		// return new Response(JSON.stringify(data), {
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// });
+		const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
+		const { data, error } = await supabase.from('vpn_link').select('*');
+		if (error) throw error;
+		return new Response(JSON.stringify(data), {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 		let { pathname } = new URL(request.url);
 		switch (pathname) {
 			case '/hello':
