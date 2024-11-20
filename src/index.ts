@@ -11,32 +11,29 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 import { createClient } from '@supabase/supabase-js';
+import { sendEmailVn } from './daili/gamil';
+
 export default {
-	// async fetch(request, env) {
-	// 	const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
-	// 	const { data, error } = await supabase.from('countries').select('*');
-	// 	if (error) throw error;
-	// 	return new Response(JSON.stringify(data), {
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 	});
-	// },
 	async fetch(request, env, ctx): Promise<Response> {
 		// console.log('request', request);
-		// console.log('env', env);
+		console.log('env', env);
 
-		const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
-		const { data, error } = await supabase.from('vpn_link').select('*');
-		if (error) throw error;
-		return new Response(JSON.stringify(data), {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
 		let { pathname } = new URL(request.url);
 		switch (pathname) {
+			case '/':
+				return new Response('Home Page');
+			case '/api':
+				const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
+				const { data, error } = await supabase.from('vpn_link').select('*');
+				if (error) throw error;
+				return new Response(JSON.stringify(data), {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+			// return new Response('API Page');
 			case '/hello':
+				// await sendEmailVn(env, '736555030@qq.com', '测试123');
 				return new Response('Hello World!');
 			case '/about':
 				return new Response('About Page');
@@ -48,8 +45,6 @@ export default {
 
 				return new Response('Not Found', { status: 404 });
 		}
-
-		// return new Response('Hello World!');
 	},
 	async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
 		console.log('cron processed');
